@@ -1,7 +1,33 @@
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
 let postRouter = require("../controllers/post_controller");
-router.route("/").get(postRouter.findAllPosts).post(postRouter.addPost);
+let path = require("path");
+
+let storage = multer.diskStorage({
+  destination: "uploads/",
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 1024 * 1024 * 100 },
+  fileFilter: (req, file, cb) => {
+    let extraname = path.extname(file.originalname);
+    if ([".jpg", ".png"].includes(extraname)) {
+      cb(null, true);
+    } else {
+      cb(new Error("It is wrong type!!!"), false);
+    }
+  },
+});
+
+router
+  .route("/")
+  .get(postRouter.findAllPosts)
+  .post(upload.array("photo"), postRouter.addPost);
 router
   .route("/:id")
   .get(postRouter.findPostById)

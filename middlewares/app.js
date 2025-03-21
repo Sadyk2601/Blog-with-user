@@ -3,6 +3,8 @@ const cors = require("cors");
 const postRouter = require("../routers/post_router");
 const userRouter = require("../routers/user_router");
 const app = express();
+app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
