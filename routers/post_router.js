@@ -19,7 +19,7 @@ const upload = multer({
     if ([".jpg", ".png"].includes(extraname)) {
       cb(null, true);
     } else {
-      cb(new Error("It is wrong type!!!"), false);
+      cb(new Error("It is wrong type!!!"));
     }
   },
 });
@@ -27,7 +27,7 @@ const upload = multer({
 router
   .route("/")
   .get(postRouter.findAllPosts)
-  .post(upload.array("photo"), postRouter.addPost);
+  .post(upload.array("image"), postRouter.addPost);
 router
   .route("/:id")
   .get(postRouter.findPostById)

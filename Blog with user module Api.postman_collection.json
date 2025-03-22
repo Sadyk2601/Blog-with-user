@@ -39,7 +39,7 @@
 			"response": []
 		},
 		{
-			"name": "get all posts Copy",
+			"name": "get post by id",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -56,7 +56,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:4000/api/v1/post",
+					"raw": "localhost:4000/api/v1/post/67dc65a3da1d1f4a37324669",
 					"host": [
 						"localhost"
 					],
@@ -64,7 +64,8 @@
 					"path": [
 						"api",
 						"v1",
-						"post"
+						"post",
+						"67dc65a3da1d1f4a37324669"
 					]
 				}
 			},
@@ -76,13 +77,29 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"title\":\"Lego Ninjago 2\",\r\n    \"content\":\"Cartoon about Ninjago\",\r\n    \"author\":\"Carl Denvers\",\r\n    \"image\":\"Ninjago.png\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "ninjago",
+							"type": "text"
+						},
+						{
+							"key": "content",
+							"value": "cartoon",
+							"type": "text"
+						},
+						{
+							"key": "author",
+							"value": "Asdqw",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/user/Pictures/Фоновые изображения рабочего стола/3. Леопард.jpg"
 						}
-					}
+					]
 				},
 				"url": {
 					"raw": "localhost:4000/api/v1/post",
@@ -228,15 +245,12 @@
 		},
 		{
 			"name": "add user",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\":\"Lego Ninjago\",\r\n    \"content\":\"Cartoon about Ninjago\",\r\n    \"author\":\"Carl Denvers\",\r\n    \"image\":\"Ninjago.png\"\r\n}",
+					"raw": "{\r\n   \"name\":\"Jahongir2\",\r\n   \"email\":\"joho2@gmail.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -244,7 +258,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:4000/api/v1/post",
+					"raw": "localhost:4000/api/v1/user",
 					"host": [
 						"localhost"
 					],
@@ -252,7 +266,7 @@
 					"path": [
 						"api",
 						"v1",
-						"post"
+						"user"
 					]
 				}
 			},
@@ -260,11 +274,8 @@
 		},
 		{
 			"name": "get all posts Copy",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "DELETE",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -276,7 +287,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:4000/api/v1/post",
+					"raw": "localhost:4000/api/v1/user/67dc6bac898f7242579369f6",
 					"host": [
 						"localhost"
 					],
@@ -284,7 +295,8 @@
 					"path": [
 						"api",
 						"v1",
-						"post"
+						"user",
+						"67dc6bac898f7242579369f6"
 					]
 				}
 			},
